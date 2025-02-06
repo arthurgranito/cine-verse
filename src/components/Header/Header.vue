@@ -1,7 +1,7 @@
 <template>
   <header>
     <RouterLink class="menu-link" :to="{ name: 'filmes' }">
-      <h1>CineVerse</h1>
+      <h1 style="color: #d4d4d8;">CineVerse</h1>
     </RouterLink>
     <Button
       icon="pi pi-bars"
