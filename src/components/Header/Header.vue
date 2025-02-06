@@ -8,6 +8,7 @@
       severity="secondary"
       outlined
       @click="visible = true"
+      class="menu-btn-mobile"
     />
 
     <Drawer
@@ -17,9 +18,9 @@
       style="width: 70vw"
     >
       <div class="menu">
-        <form>
+        <form @submit.prevent="buscar">
           <InputGroup>
-            <InputText placeholder="Buscar título" />
+            <InputText placeholder="Buscar título" v-model="busca" />
             <InputGroupAddon>
               <button
                 style="
@@ -41,27 +42,75 @@
             class="menu-link"
             @click="visible = false"
           >
-            <li>
-              <i class="pi pi-video"></i>
-              Filmes
-            </li>
+            <Button
+              icon="pi pi-video"
+              label="Filmes"
+              severity="secondary"
+              style="width: 100%; cursor: pointer"
+            />
           </RouterLink>
           <RouterLink
             :to="{ name: 'series' }"
             class="menu-link"
             @click="visible = false"
           >
-            <li>
-              <i class="pi pi-images"></i>
-              Séries
-            </li>
+            <Button
+              icon="pi pi-images"
+              label="Séries"
+              severity="secondary"
+              style="width: 100%; cursor: pointer"
+            />
           </RouterLink>
         </ul>
-
-        <Button outlined label="Cadastrar" />
-        <Button label="Entrar" />
       </div>
     </Drawer>
+
+    <div class="menu-pc">
+      <ul>
+        <RouterLink
+          :to="{ name: 'filmes' }"
+          class="menu-link"
+          @click="visible = false"
+        >
+          <Button
+            icon="pi pi-video"
+            label="Filmes"
+            severity="secondary"
+            style="width: 100%; cursor: pointer"
+          />
+        </RouterLink>
+        <RouterLink
+          :to="{ name: 'series' }"
+          class="menu-link"
+          @click="visible = false"
+        >
+          <Button
+            icon="pi pi-images"
+            label="Séries"
+            severity="secondary"
+            style="width: 100%; cursor: pointer"
+          />
+        </RouterLink>
+      </ul>
+      <form @submit.prevent="buscar">
+        <InputGroup>
+          <InputText placeholder="Buscar título" v-model="busca" />
+          <InputGroupAddon>
+            <button
+              style="
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background-color: transparent;
+              "
+              type="submit"
+            >
+              <i class="pi pi-search"></i>
+            </button>
+          </InputGroupAddon>
+        </InputGroup>
+      </form>
+    </div>
   </header>
 </template>
 
@@ -72,8 +121,22 @@ import InputGroup from "primevue/inputgroup";
 import InputGroupAddon from "primevue/inputgroupaddon";
 import InputText from "primevue/inputtext";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const visible = ref(false);
+const busca = ref("");
+
+const buscar = () => {
+  if (busca.value == "") {
+    return;
+  } else {
+    router.push(`/busca/${busca.value}`);
+    visible.value = false;
+    busca.value = "";
+  }
+};
 </script>
 
 <style scoped>
@@ -91,17 +154,36 @@ header {
 .menu ul {
   list-style-type: none;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 .menu ul li {
   display: flex;
   align-items: center;
   font-weight: 600;
+  width: 100%;
   gap: 5px;
 }
 .menu-link {
   color: white;
   text-decoration: none;
+}
+.menu-pc {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .menu-btn-mobile {
+    display: none;
+  }
+  .menu-pc {
+    display: flex;
+    gap: 20px;
+  }
+  .menu-pc ul {
+    display: flex;
+    gap: 20px;
+  }
 }
 </style>

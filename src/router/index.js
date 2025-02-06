@@ -1,5 +1,6 @@
 import Filmes from "@/components/Filmes/Filmes.vue";
 import Series from "@/components/Séries/Series.vue";
+import Busca from "@/components/Busca/Busca.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
       name: "series",
       component: Series,
     },
+    {
+      path: '/busca/:busca',
+      name: 'busca',
+      component: Busca
+    }
   ],
 });
 
