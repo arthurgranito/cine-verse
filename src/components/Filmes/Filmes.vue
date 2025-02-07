@@ -35,7 +35,7 @@
       </template>
       <template #footer>
         <RouterLink :to="`/detalhefilme/${filme.id}`">
-          <Button label="Ver detalhes" style="width: 100%"/>
+          <Button label="Ver detalhes" style="width: 100%" />
         </RouterLink>
       </template>
     </Card>
@@ -47,6 +47,7 @@ import Card from "primevue/card";
 import Button from "primevue/button";
 import ProgressSpinner from "primevue/progressspinner";
 import { onMounted, reactive } from "vue";
+import ScrollTop from "primevue/scrolltop";
 
 const data = reactive({
   apiKey: "49b16f807a3f235aa5a7ebe907022a77",
@@ -99,8 +100,8 @@ h2 {
   justify-content: center;
 }
 
-@media (min-width: 768px){
-  .cards{
+@media (min-width: 768px) {
+  .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }

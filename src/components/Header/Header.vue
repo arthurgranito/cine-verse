@@ -23,6 +23,7 @@
             to="/registro"
             style="width: 100%"
             @click="visible = false"
+            v-if="!isAuth"
           >
             <Button
               label="Cadastrar"
@@ -31,7 +32,12 @@
               style="width: 100%"
             />
           </RouterLink>
-          <RouterLink to="/entrar" style="width: 100%" @click="visible = false">
+          <RouterLink
+            to="/entrar"
+            style="width: 100%"
+            @click="visible = false"
+            v-if="!isAuth"
+          >
             <Button label="Entrar" style="width: 100%" />
           </RouterLink>
         </div>
@@ -78,6 +84,18 @@
               style="width: 100%; cursor: pointer"
             />
           </RouterLink>
+          <RouterLink
+            :to="{ name: 'series' }"
+            class="menu-link"
+            @click="visible = false"
+          >
+            <Button
+              icon="pi pi-star"
+              label="Favoritos"
+              severity="secondary"
+              style="width: 100%; cursor: pointer"
+            />
+          </RouterLink>
           <div class="social">
             <a
               target="_blank"
@@ -106,6 +124,17 @@
           </div>
         </ul>
       </div>
+
+      <template #footer>
+        <Button
+          icon="pi pi-sign-out"
+          label="Sair"
+          style="float: right"
+          severity="danger"
+          @click="sair"
+          v-if="isAuth"
+        />
+      </template>
     </Drawer>
 
     <div class="menu-pc">
@@ -140,6 +169,18 @@
             style="width: 90px; cursor: pointer"
           />
         </RouterLink>
+        <RouterLink
+          :to="{ name: 'series' }"
+          class="menu-link"
+          @click="visible = false"
+        >
+          <Button
+            icon="pi pi-star"
+            label="Favoritos"
+            severity="secondary"
+            style="width: 100%; cursor: pointer"
+          />
+        </RouterLink>
       </ul>
       <form @submit.prevent="buscar">
         <InputGroup>
@@ -163,7 +204,7 @@
           </InputGroupAddon>
         </InputGroup>
       </form>
-      <div style="display: flex; gap: 10px">
+      <div style="display: flex; gap: 10px" v-if="!isAuth">
         <RouterLink to="/registro">
           <Button
             label="Cadastrar"
@@ -176,6 +217,14 @@
           <Button label="Entrar" style="width: 100%" />
         </RouterLink>
       </div>
+      <Button
+        icon="pi pi-sign-out"
+        label="Sair"
+        style="float: right"
+        severity="danger"
+        @click="sair"
+        v-if="isAuth"
+      />
     </div>
   </header>
 </template>
@@ -187,12 +236,15 @@ import InputGroup from "primevue/inputgroup";
 import InputGroupAddon from "primevue/inputgroupaddon";
 import InputText from "primevue/inputtext";
 import { ref } from "vue";
+import { AUTH, signOut } from "@/firebase/config";
 import { useRouter } from "vue-router";
+import { onAuthStateChanged } from "firebase/auth";
 
 const router = useRouter();
 
 const visible = ref(false);
 const busca = ref("");
+const isAuth = ref(AUTH.currentUser);
 
 const buscar = () => {
   if (busca.value == "") {
@@ -203,11 +255,26 @@ const buscar = () => {
     busca.value = "";
   }
 };
+
+const sair = () => {
+  signOut(AUTH);
+  visible.value = false;
+};
+
+onAuthStateChanged(AUTH, (user) => {
+  console.log(user);
+  isAuth.value = user;
+});
 </script>
 
 <style scoped>
 header {
   padding: 20px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #1c1b22;
   display: flex;
   align-items: center;
   justify-content: space-between;

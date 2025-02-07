@@ -2,7 +2,7 @@
   <div>
     <app-header />
     <RouterView />
-    <app-footer style="position: absolute; bottom: 0;"/>
+    <app-footer/>
   </div>
 </template>
 
