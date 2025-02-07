@@ -7,7 +7,13 @@
     />
   </div>
 
-  <Button icon="pi pi-arrow-left" label="Voltar" severity="secondary" style="margin-left: 20px;" @click="router.go(-1)"/>
+  <Button
+    icon="pi pi-arrow-left"
+    label="Voltar"
+    severity="secondary"
+    style="margin-left: 20px"
+    @click="router.go(-1)"
+  />
 
   <div class="card">
     <Card style="width: 250px; overflow: hidden">
@@ -21,7 +27,7 @@
       <template #title>{{ detalhesFilme.titulo }}</template>
       <template #subtitle>
         <div>
-          <p>{{ generos.join(', ') }}</p>
+          <p>{{ generos.join(", ") }}</p>
         </div>
         <div>
           <i class="pi pi-star-fill"></i>
@@ -37,8 +43,43 @@
         </div>
       </template>
       <template #content>
-        <p style="margin: 0;">
-            {{ detalhesFilme.descricao }}
+        <p style="margin: 0">
+          {{ detalhesFilme.descricao }}
+        </p>
+      </template>
+    </Card>
+  </div>
+
+  <div class="card-tablet-pc">
+    <Card style="width: 100%; overflow: hidden; flex-direction: row">
+      <template #header>
+        <img
+          :src="`${detalhesFilme.poster}`"
+          :alt="`${detalhesFilme.titulo}`"
+          style="width: 450px; height: 100%;"
+        />
+      </template>
+      <template #title>{{ detalhesFilme.titulo }}</template>
+      <template #subtitle>
+        <div>
+          <p>{{ generos.join(", ") }}</p>
+        </div>
+        <div>
+          <i class="pi pi-star-fill"></i>
+          {{ detalhesFilme.nota }}
+        </div>
+        <div>
+          <i class="pi pi-calendar"></i>
+          {{ detalhesFilme.dataLancamento }}
+        </div>
+        <div>
+          <i class="pi pi-clock"></i>
+          {{ detalhesFilme.duracao }} minutos
+        </div>
+      </template>
+      <template #content>
+        <p style="margin: 0">
+          {{ detalhesFilme.descricao }}
         </p>
       </template>
     </Card>
@@ -48,7 +89,7 @@
 <script setup>
 import { onMounted, reactive, ref } from "vue";
 import ProgressSpinner from "primevue/progressspinner";
-import Button from 'primevue/button'
+import Button from "primevue/button";
 import Card from "primevue/card";
 import { useRoute, useRouter } from "vue-router";
 
@@ -112,5 +153,24 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+.card-tablet-pc {
+  display: none;
+}
+@media (min-width: 768px) {
+  .card {
+    display: none;
+  }
+  .card-tablet-pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card-container {
+    display: flex;
+    border-radius: 20px;
+    gap: 20px;
+  }
 }
 </style>

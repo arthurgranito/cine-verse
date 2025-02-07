@@ -1,7 +1,7 @@
 <template>
   <header>
     <RouterLink class="menu-link" :to="{ name: 'filmes' }">
-      <h1 style="color: #d4d4d8;">CineVerse</h1>
+      <h1 style="color: #d4d4d8">CineVerse</h1>
     </RouterLink>
     <Button
       icon="pi pi-bars"
@@ -67,6 +67,12 @@
 
     <div class="menu-pc">
       <ul>
+        <a target="_blank" href="https://github.com/arthurgranito">
+          <Button icon="pi pi-github" severity="secondary" outlined />
+        </a>
+        <a target="_blank" href="https://www.linkedin.com/in/arthurgranito">
+          <Button icon="pi pi-linkedin" severity="secondary" outlined />
+        </a>
         <RouterLink
           :to="{ name: 'filmes' }"
           class="menu-link"
@@ -94,7 +100,11 @@
       </ul>
       <form @submit.prevent="buscar">
         <InputGroup>
-          <InputText placeholder="Buscar título" v-model="busca" />
+          <InputText
+            placeholder="Buscar título"
+            v-model="busca"
+            style="width: 200px"
+          />
           <InputGroupAddon>
             <button
               style="
@@ -173,16 +183,25 @@ header {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .menu-btn-mobile {
     display: none;
   }
   .menu-pc {
     display: flex;
+    gap: 10px;
+  }
+
+  .menu-pc ul {
+    display: flex;
+    gap: 10px;
+  }
+}
+@media (min-width: 1024px) {
+  .menu-pc {
     gap: 20px;
   }
   .menu-pc ul {
-    display: flex;
     gap: 20px;
   }
 }

@@ -7,7 +7,13 @@
     />
   </div>
 
-  <Button icon="pi pi-arrow-left" label="Voltar" severity="secondary" style="margin-left: 20px;" @click="router.go(-1)"/>
+  <Button
+    icon="pi pi-arrow-left"
+    label="Voltar"
+    severity="secondary"
+    style="margin-left: 20px"
+    @click="router.go(-1)"
+  />
 
   <div class="card">
     <Card style="width: 250px; overflow: hidden">
@@ -43,13 +49,48 @@
       </template>
     </Card>
   </div>
+
+  <div class="card-tablet-pc">
+    <Card style="width: 100%; overflow: hidden; flex-direction: row;">
+      <template #header>
+        <img
+          :src="`${detalhesSerie.poster}`"
+          :alt="`${detalhesSerie.titulo}`"
+          style="width: 450px; height: 100%;"
+        />
+      </template>
+      <template #title>{{ detalhesSerie.titulo }}</template>
+      <template #subtitle>
+        <div>
+          <p>{{ generos.join(", ") }}</p>
+        </div>
+        <div>
+          <i class="pi pi-star-fill"></i>
+          {{ detalhesSerie.nota }}
+        </div>
+        <div>
+          <i class="pi pi-calendar"></i>
+          {{ detalhesSerie.dataEstreia }}
+        </div>
+        <div>
+          <i class="pi pi-receipt"></i>
+          {{ detalhesSerie.numeroTemporadas }} temporadas
+        </div>
+      </template>
+      <template #content>
+        <p style="margin: 0">
+          {{ detalhesSerie.descricao }}
+        </p>
+      </template>
+    </Card>
+  </div>
 </template>
 
 <script setup>
 import Card from "primevue/card";
 import ProgressSpinner from "primevue/progressspinner";
 import { useRoute, useRouter } from "vue-router";
-import Button from 'primevue/button'
+import Button from "primevue/button";
 import { onMounted, reactive, ref } from "vue";
 
 const router = useRouter();
@@ -112,5 +153,24 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+.card-tablet-pc{
+  display: none;
+}
+@media (min-width: 768px) {
+  .card {
+    display: none;
+  }
+  .card-tablet-pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card-container {
+    display: flex;
+    border-radius: 20px;
+    gap: 20px;
+  }
 }
 </style>

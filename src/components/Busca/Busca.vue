@@ -223,6 +223,11 @@ p {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (min-width: 1024px) {
   .cards {
     grid-template-columns: repeat(4, 1fr);
