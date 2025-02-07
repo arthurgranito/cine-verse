@@ -1,29 +1,64 @@
-# cineverse
+# CineVerse
 
-This template should help get you started developing with Vue 3 in Vite.
+![CineVerse Banner](https://i.imgur.com/exemplo-banner.png) <!-- Substitua pelo link do print principal -->
 
-## Recommended IDE Setup
+CineVerse é um site desenvolvido com Vue.js que consome a API do TMDB para exibir informações sobre filmes e séries. 
+Os usuários podem buscar títulos específicos, visualizar detalhes das produções e navegar entre diferentes categorias.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🔗 Link do Deploy
+[CineVerse Online](https://cineverse-zeta.vercel.app)
 
-## Customize configuration
+## 🚀 Funcionalidades
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- 🔍 Pesquisa por filmes e séries
+- 🎬 Exibição de informações detalhadas dos títulos
+- 📌 Listagem de filmes e séries populares
+- 📺 Navegação entre diferentes categorias
 
-## Project Setup
+## 🛠 Tecnologias Utilizadas
 
-```sh
-npm install
-```
+- **Vue.js** - Framework principal
+- **PrimeVue** - Biblioteca de componentes UI
+- **Vue Router** - Gerenciamento de rotas
+- **TMDB API** - Fonte de dados sobre filmes e séries
+- **Vercel** - Hospedagem do projeto
 
-### Compile and Hot-Reload for Development
+## 🖥 Prints
 
-```sh
-npm run dev
-```
+<img src="./src/assets/README/home.png"/>
 
-### Compile and Minify for Production
+## ⚙️ Como Rodar o Projeto Localmente
 
-```sh
-npm run build
-```
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/seu-usuario/cineverse.git
+   ```
+2. Acesse a pasta do projeto:
+   ```sh
+   cd cineverse
+   ```
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
+4. Crie um arquivo `.env` na raiz do projeto e adicione sua chave da API do TMDB:
+   ```sh
+   VITE_TMDB_API_KEY=SUA_CHAVE_AQUI
+   ```
+5. Inicie o servidor de desenvolvimento:
+   ```sh
+   npm run dev
+   ```
+6. Acesse no navegador:
+   ```
+   http://localhost:5173
+   ```
+
+## 🤝 Contribuição
+
+Sinta-se à vontade para abrir issues ou fazer pull requests para melhorias no projeto!
+
+## 📜 Licença
+
+Este projeto é licenciado sob a [MIT License](LICENSE).
+
