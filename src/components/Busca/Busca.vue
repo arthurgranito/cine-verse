@@ -18,7 +18,11 @@
       justify-content: center;
     "
   >
-    <SelectButton v-model="data.opcaoSelecionada" :options="data.options" />
+    <SelectButton
+      v-model="data.opcaoSelecionada"
+      :options="data.options"
+      v-if="!data.filmes.length == 0 && !data.series.length == 0"
+    />
   </div>
 
   <div class="loading" v-if="data.isLoading">
@@ -34,13 +38,15 @@
       style="
         width: 250px;
         overflow: hidden;
-        height: 576px;
+        min-height: 576px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
       "
       v-for="filme in data.filmes"
-      v-if="data.opcaoSelecionada == 'Todos' || data.opcaoSelecionada == 'Filmes'"
+      v-if="
+        data.opcaoSelecionada == 'Todos' || data.opcaoSelecionada == 'Filmes'
+      "
     >
       <template #header>
         <img
@@ -55,7 +61,9 @@
         {{ filme.vote_average.toFixed(1) }}
       </template>
       <template #footer>
-        <Button label="Ver detalhes" style="width: 100%" />
+        <RouterLink :to="`/detalhefilme/${filme.id}`">
+          <Button label="Ver detalhes" style="width: 100%" />
+        </RouterLink>
       </template>
     </Card>
 
@@ -69,7 +77,9 @@
         justify-content: space-between;
       "
       v-for="serie in data.series"
-      v-if="data.opcaoSelecionada == 'Todos' || data.opcaoSelecionada == 'Séries'"
+      v-if="
+        data.opcaoSelecionada == 'Todos' || data.opcaoSelecionada == 'Séries'
+      "
     >
       <template #header>
         <img
@@ -84,7 +94,9 @@
         {{ serie.vote_average.toFixed(1) }}
       </template>
       <template #footer>
-        <Button label="Ver detalhes" style="width: 100%" />
+        <RouterLink :to="`/detalheserie/${serie.id}`">
+          <Button label="Ver detalhes" style="width: 100%" />
+        </RouterLink>
       </template>
     </Card>
   </div>
@@ -102,7 +114,7 @@
 </template>
 
 <script setup>
-import { useRoute } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
 import Card from "primevue/card";
 import SelectButton from "primevue/selectbutton";
 import Button from "primevue/button";

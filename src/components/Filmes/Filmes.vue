@@ -14,7 +14,7 @@
       style="
         width: 250px;
         overflow: hidden;
-        height: 576px;
+        min-height: 576px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -34,7 +34,9 @@
         {{ filme.vote_average.toFixed(1) }}
       </template>
       <template #footer>
-        <Button label="Ver detalhes" style="width: 100%" />
+        <RouterLink :to="`/detalhefilme/${filme.id}`">
+          <Button label="Ver detalhes" style="width: 100%"/>
+        </RouterLink>
       </template>
     </Card>
   </div>
