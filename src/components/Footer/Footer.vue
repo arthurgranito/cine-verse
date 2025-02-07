@@ -12,6 +12,7 @@ footer{
     justify-content: center;
 }
 footer p{
-    color: #d4d4d8
+    color: #d4d4d8;
+    text-align: center;
 }
 </style>

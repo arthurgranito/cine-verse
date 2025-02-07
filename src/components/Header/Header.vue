@@ -61,6 +61,32 @@
               style="width: 100%; cursor: pointer"
             />
           </RouterLink>
+          <div class="social">
+            <a
+              target="_blank"
+              href="https://github.com/arthurgranito"
+              style="width: 100%"
+            >
+              <Button
+                icon="pi pi-github"
+                severity="secondary"
+                outlined
+                style="width: 100%"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/arthurgranito"
+              style="width: 100%;"
+            >
+              <Button
+                icon="pi pi-linkedin"
+                severity="secondary"
+                outlined
+                style="width: 100%;"
+              />
+            </a>
+          </div>
         </ul>
       </div>
     </Drawer>
@@ -82,7 +108,7 @@
             icon="pi pi-video"
             label="Filmes"
             severity="secondary"
-            style="width: 100%; cursor: pointer"
+            style="width: 90px; cursor: pointer"
           />
         </RouterLink>
         <RouterLink
@@ -94,7 +120,7 @@
             icon="pi pi-images"
             label="Séries"
             severity="secondary"
-            style="width: 100%; cursor: pointer"
+            style="width: 90px; cursor: pointer"
           />
         </RouterLink>
       </ul>
@@ -182,7 +208,10 @@ header {
 .menu-pc {
   display: none;
 }
-
+.social{
+  display: flex;
+  gap: 10px;
+}
 @media (min-width: 768px) {
   .menu-btn-mobile {
     display: none;
