@@ -26,7 +26,7 @@ Os usuários podem buscar títulos específicos, visualizar detalhes das produç
 
 ## 🖥 Prints
 
-<div style="display: flex; gap: 20px;">
+<div style="display: flex; gap: 35px;">
 <img src="./src/assets/README/home.png"/>
 <img src="./src/assets/README/menu.png"/>
 <img src="./src/assets/README/busca.png"/>
