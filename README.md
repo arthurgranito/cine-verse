@@ -26,6 +26,11 @@ Os usuários podem buscar títulos específicos, visualizar detalhes das produç
 ## 🖥 Prints
 
 <img src="./src/assets/README/home.png"/>
+<img src="./src/assets/README/menu.png"/>
+<img src="./src/assets/README/busca.png"/>
+<img src="./src/assets/README/detalhes-mobile.png"/>
+<img src="./src/assets/README/detalhes-mobile.png"/>
+<img src="./src/assets/README/detalhes-pc.png"/>
 
 ## ⚙️ Como Rodar o Projeto Localmente
 
