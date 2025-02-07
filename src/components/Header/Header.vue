@@ -19,7 +19,11 @@
     >
       <div class="menu">
         <div style="display: flex; gap: 10px">
-          <RouterLink to="/registro" style="width: 100%;" @click="visible = false">
+          <RouterLink
+            to="/registro"
+            style="width: 100%"
+            @click="visible = false"
+          >
             <Button
               label="Cadastrar"
               outlined
@@ -27,7 +31,7 @@
               style="width: 100%"
             />
           </RouterLink>
-          <RouterLink to="/entrar" style="width: 100%;" @click="visible = false">
+          <RouterLink to="/entrar" style="width: 100%" @click="visible = false">
             <Button label="Entrar" style="width: 100%" />
           </RouterLink>
         </div>
@@ -238,7 +242,7 @@ header {
   display: flex;
   gap: 10px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .menu-btn-mobile {
     display: none;
   }
@@ -251,8 +255,6 @@ header {
     display: flex;
     gap: 10px;
   }
-}
-@media (min-width: 1024px) {
   .menu-pc {
     gap: 20px;
   }

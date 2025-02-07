@@ -9,6 +9,7 @@ footer{
     padding: 10px;
     display: flex;
     align-items: center;
+    width: 100vw;
     justify-content: center;
 }
 footer p{
