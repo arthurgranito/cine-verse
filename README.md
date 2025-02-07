@@ -2,10 +2,11 @@
 
 ![CineVerse Banner](https://i.imgur.com/exemplo-banner.png) <!-- Substitua pelo link do print principal -->
 
-CineVerse é um site desenvolvido com Vue.js que consome a API do TMDB para exibir informações sobre filmes e séries. 
+CineVerse é um site desenvolvido com Vue.js que consome a API do TMDB para exibir informações sobre filmes e séries.
 Os usuários podem buscar títulos específicos, visualizar detalhes das produções e navegar entre diferentes categorias.
 
 ## 🔗 Link do Deploy
+
 [CineVerse Online](https://cineverse-zeta.vercel.app)
 
 ## 🚀 Funcionalidades
@@ -25,12 +26,14 @@ Os usuários podem buscar títulos específicos, visualizar detalhes das produç
 
 ## 🖥 Prints
 
+<div style="display: flex; gap: 20px;">
 <img src="./src/assets/README/home.png"/>
 <img src="./src/assets/README/menu.png"/>
 <img src="./src/assets/README/busca.png"/>
 <img src="./src/assets/README/detalhes-mobile.png"/>
 <img src="./src/assets/README/detalhes-mobile.png"/>
 <img src="./src/assets/README/detalhes-pc.png"/>
+</div>
 
 ## ⚙️ Como Rodar o Projeto Localmente
 
@@ -66,4 +69,3 @@ Sinta-se à vontade para abrir issues ou fazer pull requests para melhorias no p
 ## 📜 Licença
 
 Este projeto é licenciado sob a [MIT License](LICENSE).
-
