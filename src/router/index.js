@@ -4,6 +4,8 @@ import Busca from "@/components/Busca/Busca.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import DetalhesFilmes from "@/components/Detalhes/DetalhesFilmes.vue";
 import DetalhesSerie from "@/components/Detalhes/DetalhesSerie.vue";
+import Register from "@/components/Register/Register.vue";
+import Login from "@/components/Login/Login.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +34,16 @@ const router = createRouter({
       path: "/detalheserie/:id",
       name: "detalheserie",
       component: DetalhesSerie,
+    },
+    {
+      path: "/registro",
+      name: "registro",
+      component: Register,
+    },
+    {
+      path: "/entrar",
+      name: "entrar",
+      component: Login,
     },
   ],
 });

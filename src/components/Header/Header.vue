@@ -18,6 +18,19 @@
       style="width: 70vw"
     >
       <div class="menu">
+        <div style="display: flex; gap: 10px">
+          <RouterLink to="/registro" style="width: 100%;" @click="visible = false">
+            <Button
+              label="Cadastrar"
+              outlined
+              severity="secondary"
+              style="width: 100%"
+            />
+          </RouterLink>
+          <RouterLink to="/entrar" style="width: 100%;" @click="visible = false">
+            <Button label="Entrar" style="width: 100%" />
+          </RouterLink>
+        </div>
         <form @submit.prevent="buscar">
           <InputGroup>
             <InputText placeholder="Buscar título" v-model="busca" />
@@ -77,13 +90,13 @@
             <a
               target="_blank"
               href="https://www.linkedin.com/in/arthurgranito"
-              style="width: 100%;"
+              style="width: 100%"
             >
               <Button
                 icon="pi pi-linkedin"
                 severity="secondary"
                 outlined
-                style="width: 100%;"
+                style="width: 100%"
               />
             </a>
           </div>
@@ -146,6 +159,19 @@
           </InputGroupAddon>
         </InputGroup>
       </form>
+      <div style="display: flex; gap: 10px">
+        <RouterLink to="/registro">
+          <Button
+            label="Cadastrar"
+            outlined
+            severity="secondary"
+            style="width: 100%"
+          />
+        </RouterLink>
+        <RouterLink to="/entrar">
+          <Button label="Entrar" style="width: 100%" />
+        </RouterLink>
+      </div>
     </div>
   </header>
 </template>
@@ -208,7 +234,7 @@ header {
 .menu-pc {
   display: none;
 }
-.social{
+.social {
   display: flex;
   gap: 10px;
 }
