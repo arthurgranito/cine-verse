@@ -13,7 +13,7 @@
 
     <Drawer
       v-model:visible="visible"
-      header="CineVerse"
+      :header="`${userName !== '' ? `Olá, ${userName.toUpperCase()}` : 'CineVerse'}`"
       position="right"
       style="width: 70vw"
     >
@@ -80,18 +80,6 @@
             <Button
               icon="pi pi-images"
               label="Séries"
-              severity="secondary"
-              style="width: 100%; cursor: pointer"
-            />
-          </RouterLink>
-          <RouterLink
-            :to="{ name: 'series' }"
-            class="menu-link"
-            @click="visible = false"
-          >
-            <Button
-              icon="pi pi-star"
-              label="Favoritos"
               severity="secondary"
               style="width: 100%; cursor: pointer"
             />
@@ -169,18 +157,6 @@
             style="width: 90px; cursor: pointer"
           />
         </RouterLink>
-        <RouterLink
-          :to="{ name: 'series' }"
-          class="menu-link"
-          @click="visible = false"
-        >
-          <Button
-            icon="pi pi-star"
-            label="Favoritos"
-            severity="secondary"
-            style="width: 100%; cursor: pointer"
-          />
-        </RouterLink>
       </ul>
       <form @submit.prevent="buscar">
         <InputGroup>
@@ -245,6 +221,7 @@ const router = useRouter();
 const visible = ref(false);
 const busca = ref("");
 const isAuth = ref(AUTH.currentUser);
+const userName = ref('');
 
 const buscar = () => {
   if (busca.value == "") {
@@ -259,11 +236,15 @@ const buscar = () => {
 const sair = () => {
   signOut(AUTH);
   visible.value = false;
+  userName.value = '';
 };
 
 onAuthStateChanged(AUTH, (user) => {
   console.log(user);
   isAuth.value = user;
+  if(user){
+    userName.value = user.displayName;
+  }
 });
 </script>
 

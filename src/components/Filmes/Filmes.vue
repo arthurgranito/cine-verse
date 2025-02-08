@@ -1,5 +1,8 @@
 <template>
-  <h2>Filmes</h2>
+  <h2 class="saudacao" v-if="userName !== ''">
+    Olá, {{ userName.toUpperCase() }}
+  </h2>
+  <h2 class="titulo">Filmes</h2>
 
   <div class="loading" v-if="data.isLoading">
     <ProgressSpinner
@@ -46,14 +49,16 @@
 import Card from "primevue/card";
 import Button from "primevue/button";
 import ProgressSpinner from "primevue/progressspinner";
-import { onMounted, reactive } from "vue";
-import ScrollTop from "primevue/scrolltop";
+import { onMounted, reactive, ref } from "vue";
+import { onAuthStateChanged } from "firebase/auth";
+import { AUTH } from "@/firebase/config";
 
 const data = reactive({
   apiKey: "49b16f807a3f235aa5a7ebe907022a77",
   filmes: [],
   isLoading: true,
 });
+const userName = ref("");
 
 const buscarFilmes = () => {
   data.isLoading = true;
@@ -74,10 +79,22 @@ const buscarFilmes = () => {
 onMounted(() => {
   buscarFilmes();
 });
+
+onAuthStateChanged(AUTH, (user) => {
+  if (user) {
+    userName.value = user.displayName;
+  } else{
+    userName.value = '';
+  }
+});
 </script>
 
 <style scoped>
-h2 {
+.saudacao {
+  margin: 20px;
+  display: none;
+}
+.titulo {
   text-align: center;
 }
 .cards {
@@ -106,6 +123,9 @@ h2 {
   }
 }
 @media (min-width: 1024px) {
+  .saudacao {
+    display: flex;
+  }
   .cards {
     grid-template-columns: repeat(4, 1fr);
   }

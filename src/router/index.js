@@ -7,6 +7,9 @@ import DetalhesSerie from "@/components/Detalhes/DetalhesSerie.vue";
 import Register from "@/components/Register/Register.vue";
 import Login from "@/components/Login/Login.vue";
 
+import { AUTH } from "@/firebase/config";
+import { onAuthStateChanged } from "firebase/auth";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -46,6 +49,16 @@ const router = createRouter({
       component: Login,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  onAuthStateChanged(AUTH, (user) => {
+    if (user && (to.path === "/registro" || to.path === "/entrar")) {
+      next("/");
+    } else {
+      next();
+    }
+  });
 });
 
 export default router;

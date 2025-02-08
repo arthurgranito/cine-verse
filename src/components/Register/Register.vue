@@ -18,6 +18,13 @@
               <InputGroupAddon>
                 <i class="pi pi-user"></i>
               </InputGroupAddon>
+              <InputText placeholder="Seu nome" v-model="formData.nome" />
+            </InputGroup>
+
+            <InputGroup>
+              <InputGroupAddon>
+                <i class="pi pi-envelope"></i>
+              </InputGroupAddon>
               <InputText placeholder="Seu email" v-model="formData.email" />
             </InputGroup>
 
@@ -67,7 +74,11 @@ import Password from "primevue/password";
 import Button from "primevue/button";
 import ProgressSpinner from "primevue/progressspinner";
 import { reactive, ref } from "vue";
-import { AUTH, createUserWithEmailAndPassword } from "@/firebase/config";
+import {
+  AUTH,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "@/firebase/config";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -75,6 +86,7 @@ const isLoading = ref(false);
 const formData = reactive({
   email: "",
   senha: "",
+  nome: "",
 });
 const erro = ref("");
 
@@ -82,7 +94,13 @@ const registrar = async () => {
   isLoading.value = true;
   erro.value = "";
   try {
-    await createUserWithEmailAndPassword(AUTH, formData.email, formData.senha);
+    const userCredential = await createUserWithEmailAndPassword(
+      AUTH,
+      formData.email,
+      formData.senha
+    );
+    await updateProfile(userCredential.user, { displayName: formData.nome });
+    console.log("Usuário registrado com nome:", userCredential.user.displayName);
     isLoading.value = false;
     router.push("/");
   } catch (err) {
