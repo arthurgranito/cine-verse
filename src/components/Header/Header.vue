@@ -252,6 +252,7 @@ onAuthStateChanged(AUTH, (user) => {
 header {
   padding: 20px;
   position: sticky;
+  margin-bottom: 20px;
   top: 0;
   left: 0;
   z-index: 1000;
